@@ -54,6 +54,8 @@ In addition, the IBM Cloud CLI, kubectl CLI, and OpenShift CLI are installed ins
 
 The VSI is created in [nlb_proxy_via_vsi.tf](./nlb_proxy_via_vsi.tf)
 
+To view the code that will be installed on the VSI, refer to the [./scripts/nlb_terraform](./scripts/nlb_terraform) folder.
+
 ---
 
 Variable                        | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Default

@@ -55,6 +55,7 @@ rm -rf kubectl kubectl.sha256
 
 # Install IBM Cloud CLI
 curl -sL https://raw.githubusercontent.com/IBM-Cloud/ibm-cloud-developer-tools/master/linux-installer/idt-installer | bash
+ibmcloud plugin install kubernetes-service
 
 # Install OpenShift CLI
 wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.5/openshift-client-linux-4.5.38.tar.gz
