@@ -33,8 +33,12 @@ resource ibm_is_instance vsi {
   profile        = var.vsi_machine_type
   resource_group = data.ibm_resource_group.resource_group.id
   primary_network_interface {
-    subnet   = data.ibm_is_subnet.subnets[0].id
-  }  
+    subnet       = data.ibm_is_subnet.subnets[0].id
+  }
+  vpc            = data.ibm_is_vpc.vpc.id
+  zone           = data.ibm_is_subnet.subnets[0].zone
+  keys           = [ibm_is_ssh_key.ssh_key.id]
+  depends_on     = [ ibm_container_vpc_cluster.cluster ]
 
   user_data  = <<BASH
 #!/bin/bash
@@ -244,12 +248,6 @@ terraform plan
 echo "yes" | terraform apply
   BASH
                  
-  vpc        = data.ibm_is_vpc.vpc.id
-  zone       = data.ibm_is_subnet.subnets[0].zone
-
-  keys       = [ibm_is_ssh_key.ssh_key.id]
-
-  depends_on = [ ibm_container_vpc_cluster.cluster ]
 }
 
 ##############################################################################

@@ -3,8 +3,8 @@ ENV GOPATH /go
 ENV GOLANG_VERSION 1.9.4
 ENV GOLANG_SRC_URL https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz
 ENV GOLANG_SRC_SHA256 0573a8df33168977185aa44173305e5a0450f55213600e94541604b75d46dc06
-ENV TERRAFORM_VERSION 0.13.6
-ENV TERRAFORM_IBMCLOUD_VERSION v1.21.2
+ENV TERRAFORM_VERSION 0.15.1
+ENV TERRAFORM_IBMCLOUD_VERSION v1.19.0
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 RUN set -ex \
     && apk update \
@@ -28,15 +28,9 @@ RUN set -ex \
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 WORKDIR $GOPATH/bin
 RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-RUN unzip terraform_0.13.6_linux_amd64.zip
+RUN unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 RUN chmod +x terraform
-RUN rm -rf terraform_0.13.6_linux_amd64.zip
-# WORKDIR /root
-# RUN echo $' providers { \n \
-#     ibm = "/go/bin/terraform-provider-ibm_${TERRAFORM_IBMCLOUD_VERSION}" \n \
-#     }' > /root/.terraformrc
-WORKDIR $GOPATH/bin
-# RUN wget https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/${TERRAFORM_IBMCLOUD_VERSION}/linux_amd64.zip
-# RUN unzip linux_amd64.zip
-# RUN chmod +x terraform-provider-ibm_${TERRAFORM_IBMCLOUD_VERSION}
+RUN rm -rf terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+WORKDIR /root
+RUN echo "frog" > frog.txt
 COPY . $GOPATH/bin/infrastructure-code
