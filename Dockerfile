@@ -3,7 +3,7 @@ ENV GOPATH /go
 ENV GOLANG_VERSION 1.9.4
 ENV GOLANG_SRC_URL https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz
 ENV GOLANG_SRC_SHA256 0573a8df33168977185aa44173305e5a0450f55213600e94541604b75d46dc06
-ENV TERRAFORM_VERSION 0.15.1
+ENV TERRAFORM_VERSION 0.14.5
 ENV TERRAFORM_IBMCLOUD_VERSION v1.19.0
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 RUN set -ex \
@@ -32,5 +32,4 @@ RUN unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 RUN chmod +x terraform
 RUN rm -rf terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 WORKDIR /root
-RUN echo "frog" > frog.txt
-COPY . $GOPATH/bin/infrastructure-code
+COPY . /root/infrastructure-code
