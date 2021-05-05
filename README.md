@@ -1,4 +1,4 @@
-# Red Hat OpenShift Cluster on VPC
+# Red Hat OpenShift Cluster on VPC Using Private Service Endpoint
 
 This template creates a Red Hat OpenShift cluster with the Public Service Endpoint disabled on an existing VPC. To create this cluster, a COS instance is created for cluster storage, and a Key Protect instance is created for encryption. This template creates a VSI to create an NLB Proxy for cluster access.
 
